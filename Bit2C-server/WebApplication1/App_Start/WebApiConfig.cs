@@ -11,10 +11,8 @@ namespace WebApplication1
         public static void Register(HttpConfiguration config)
         {
             // Web API configuration and services
-            //string origin = "http://localhost:50164/IDGWebClient/";
             EnableCorsAttribute cors = new EnableCorsAttribute("*", "*", "GET,POST");
             config.EnableCors(cors); // Lev: We must have CORS enabled, or our client-sided application won't be able to request resources from our Rest API...
-
 
             // Web API routes
             config.MapHttpAttributeRoutes();
@@ -29,7 +27,7 @@ namespace WebApplication1
                 "Bit2C", "bit2c/{action}",
                 new { controller = "Bit2C" });
 
-            config.Formatters.Remove(config.Formatters.XmlFormatter);
+            config.Formatters.Remove(config.Formatters.XmlFormatter); // For convinience, leave only Json Formatter.
         }
     }
 }

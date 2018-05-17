@@ -6,7 +6,7 @@
   "apps": [
     {
       "root": "src",
-      "outDir": "dist",
+      "outDir": "../Bit2C-server/WebApplication1/dist",
       "assets": ["assets", "favicon.ico"],
       "index": "index.html",
       "main": "main.ts",
