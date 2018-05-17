@@ -16,7 +16,7 @@
   </div>
   <div class="field">
     <div class="control columns is-mobile">
-      <div class="column has-text-right">
+      <div class="column has-text-right" [@flyInLeft]="state">
         <label class="label">Last Price</label>
         <label class="label">Last 24 Hours Price Avg.</label>
         <label class="label">Last 24 Hours Vol.</label>
@@ -24,12 +24,12 @@
         <label class="label">Lowest Sell Order</label>
       </div>
       <div class="column">
-        <div *ngIf="tickerData">
-          <p class="label has-text-weight-light">{{tickerData.lastPrice | currency:'ILS'}}</p>
-          <p class="label has-text-weight-light">{{tickerData.averagePrice | currency:'ILS'}}</p>
-          <p class="label has-text-weight-light">{{tickerData.averageVolume | number:'1.0-8'}}</p>
-          <p class="label has-text-weight-light">{{tickerData.highestBuyOrderPrice | currency:'ILS'}}</p>
-          <p class="label has-text-weight-light">{{tickerData.lowestSellOrderPrice | currency:'ILS'}}</p>
+        <div [@flyInRight]="state" (@flyInRight.done)="onAnimationFinished()">
+          <p class="label has-text-weight-light">{{tickerData?.lastPrice | currency:'ILS'}}</p>
+          <p class="label has-text-weight-light">{{tickerData?.averagePrice | currency:'ILS'}}</p>
+          <p class="label has-text-weight-light">{{tickerData?.averageVolume | number:'1.0-8'}}</p>
+          <p class="label has-text-weight-light">{{tickerData?.highestBuyOrderPrice | currency:'ILS'}}</p>
+          <p class="label has-text-weight-light">{{tickerData?.lowestSellOrderPrice | currency:'ILS'}}</p>
         </div>
       </div>
     </div>
