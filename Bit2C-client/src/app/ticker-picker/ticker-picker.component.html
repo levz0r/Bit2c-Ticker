@@ -1,0 +1,37 @@
+<div class="container">
+  <div class="field">
+    <div class="control has-icons-left">
+      <span class="select is-fullwidth">
+        <select [(ngModel)]="selectedPair" (ngModelChange)="selectedPairChanged($event)">
+          <option *ngFor="let pair of pairs" [ngValue]="pair">{{pair.value}}</option>
+        </select>
+      </span>
+      <span class="icon is-small is-left">
+        <i class="fas fa-coins"></i>
+      </span>
+      <span *ngIf="isFetching" class="icon has-text-info is-medium">
+        <i class="fas fa-sync fa-spin"></i>
+      </span>
+    </div>
+  </div>
+  <div class="field">
+    <div class="control columns is-mobile">
+      <div class="column has-text-right">
+        <label class="label">Last Price</label>
+        <label class="label">Last 24 Hours Price Avg.</label>
+        <label class="label">Last 24 Hours Vol.</label>
+        <label class="label">Highest Buy Order</label>
+        <label class="label">Lowest Sell Order</label>
+      </div>
+      <div class="column">
+        <div *ngIf="tickerData">
+          <p class="label has-text-weight-light">{{tickerData.lastPrice | currency:'ILS'}}</p>
+          <p class="label has-text-weight-light">{{tickerData.averagePrice | currency:'ILS'}}</p>
+          <p class="label has-text-weight-light">{{tickerData.averageVolume | number:'1.0-8'}}</p>
+          <p class="label has-text-weight-light">{{tickerData.highestBuyOrderPrice | currency:'ILS'}}</p>
+          <p class="label has-text-weight-light">{{tickerData.lowestSellOrderPrice | currency:'ILS'}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
